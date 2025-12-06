@@ -19,6 +19,8 @@ Fonts - Brick Sans, Bricolage Grotesque, Norwester
 
 
 Project Structure:
+
+```
 snipr/
 │── app.py
 │── requirements.txt
@@ -33,6 +35,7 @@ snipr/
 │
 └── templates/
     └── index.html
+```
 
 
 How to Run:
