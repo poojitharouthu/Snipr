@@ -33,5 +33,9 @@ snipr/
 └── templates/
     └── index.html
 
-
+How to Run:
+1. Download or clone the project
+2. Install Python + Flask
+3. Run the app: python app.py
+4. Open in browser: http://127.0.0.1:5000
 
