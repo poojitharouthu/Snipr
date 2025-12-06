@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Snipr</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="snipr-wrapper">
+        <div class="snipr-card">
+            <h1 class="snipr-logo">Snipr</h1>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST" action="/" class="snipr-form">
+                <input
+                    type="text"
+                    name="long_url"
+                    class="snipr-input"
+                    placeholder="{% if short_url %}(shortened link here){% else %}Paste your long URL here{% endif %}"
+                    {% if short_url %}
+                        value="{{ short_url }}"
+                        readonly
+                    {% endif %}
+                />
+
+                {% if not short_url %}
+                    <!-- PAGE 1: SNIP IT -->
+                    <button type="submit" class="snipr-btn snipr-btn-main">
+                        SNIP IT
+                    </button>
+                {% endif %}
+            </form>
+
+            {% if short_url %}
+            <!-- PAGE 2 & PAGE 3: DO IT AGAIN + COPY / COPIED -->
+            <div class="snipr-actions">
+                <a href="{{ url_for('index') }}" class="snipr-btn snipr-btn-secondary">
+                    DO IT AGAIN
+                </a>
+
+                <button
+                    type="button"
+                    class="snipr-btn snipr-btn-main"
+                    id="copyBtn"
+                    data-url="{{ short_url }}"
+                >
+                    COPY LINK
+                </button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if short_url %}
+    <script>
+        const copyBtn = document.getElementById("copyBtn");
+        if (copyBtn) {
+            copyBtn.addEventListener("click", async () => {
+                const urlToCopy = copyBtn.getAttribute("data-url");
+                try {
+                    await navigator.clipboard.writeText(urlToCopy);
+                    // PAGE 3 state: text becomes COPIED
+                    copyBtn.textContent = "COPIED";
+                } catch (err) {
+                    console.error("Failed to copy:", err);
+                }
+            });
+        }
+    </script>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,170 @@
+/* ---------- FONT LOADING ---------- */
+
+@font-face {
+    font-family: "BrickSans";
+    src: url("/static/fonts/NTBrickSans.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Norwester";
+    src: url("/static/fonts/norwester.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "BricolageGrotesque";
+    src: url("/static/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
+        format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* If you renamed the last file to BricolageGrotesque.ttf, change the url above accordingly. */
+
+/* ---------- GLOBAL STYLES ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #141c26; /* deep navy */
+    color: #f0dfb4;           /* warm beige */
+}
+
+/* ---------- LAYOUT ---------- */
+
+.snipr-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.snipr-card {
+    text-align: center;
+}
+
+/* ---------- LOGO ---------- */
+
+.snipr-logo {
+    font-family: "BrickSans", sans-serif;
+    font-size: 120px;
+    margin: 0 0 40px;
+    letter-spacing: 6px;
+    color: #f0dfb4;
+}
+
+/* ---------- INPUT FIELD ---------- */
+
+.snipr-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.snipr-input {
+    width: 540px;
+    max-width: 90vw;
+    padding: 18px 28px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    background-color: #8c7a65; /* brownish pill */
+    font-family: "BricolageGrotesque", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    font-size: 20px;
+    color: #f5f5f5;
+}
+
+.snipr-input::placeholder {
+    color: rgba(240, 240, 240, 0.4);
+}
+
+/* ---------- BUTTONS ---------- */
+
+.snipr-btn {
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-family: "Norwester", system-ui, sans-serif;
+    font-size: 20px;
+    padding: 14px 42px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+/* Main pill: brown background, light text — used for SNIP IT and COPY/COPIED */
+.snipr-btn-main {
+    background-color: #8c7a65;
+    color: #f5f5f5;
+}
+
+/* Secondary: white pill, brown text — DO IT AGAIN */
+.snipr-btn-secondary {
+    background-color: #f5f5f5;
+    color: #8c7a65;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Button hover / active subtle states */
+.snipr-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+.snipr-btn:active {
+    transform: translateY(1px);
+    opacity: 0.9;
+}
+
+/* ---------- ACTION BUTTON ROW ---------- */
+
+.snipr-actions {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+/* ---------- ERROR MESSAGE ---------- */
+
+.error-message {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    font-family: "BricolageGrotesque", system-ui, sans-serif;
+    font-size: 16px;
+    color: #ffb8b8;
+}
+
+/* ---------- RESPONSIVE TWEAKS ---------- */
+
+@media (max-width: 600px) {
+    .snipr-logo {
+        font-size: 72px;
+    }
+
+    .snipr-input {
+        font-size: 18px;
+    }
+
+    .snipr-btn {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+}
